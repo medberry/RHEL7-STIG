@@ -142,13 +142,22 @@
       - RHEL-07-040000
 
 - name: "LOW | RHEL-07-040530 | PATCH | The Red Hat Enterprise Linux operating system must display the date and time of the last successful account logon upon logon."
-  blockinfile:
-      state: present
-      path: /etc/pam.d/postlogin
-      insertafter: '^# User changes will be destroyed'
-      block: |
-          ### RHEL-07-040530 ###
-          session required pam_lastlog.so showfailed
+  block:
+      - blockinfile:
+            state: present
+            path: /etc/pam.d/postlogin
+            insertafter: '^# User changes will be destroyed'
+            block: |
+                ### RHEL-07-040530 ###
+                session required pam_lastlog.so showfailed
+
+      - lineinfile:
+            path: "{{ item }}"
+            regexp: pam_lastlog\.so .*silent.*
+            state: absent
+        when: rhel7stig_workaround_for_disa_benchmark
+        with_items:
+            - /etc/pam.d/postlogin
   when: rhel_07_040530
   tags:
       - RHEL-07-040530
