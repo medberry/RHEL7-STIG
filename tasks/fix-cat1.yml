@@ -216,6 +216,7 @@
   when: rhel_07_020230
   tags:
       - RHEL-07-020230
+  register: RHEL-07-020230-RESULTS
 
 # RHEL-07-020250 | PATCH | The operating system must be a supported release."
 # Not automated since current end of life for RHEL 7 is 2024-06-30
@@ -367,6 +368,7 @@
   tags:
       - RHEL-07-021710
       - telnet
+  register: RHEL-07-021710-RESULTS
 
 - block:
       - name: "HIGH | RHEL-07-030000 | PATCH | Auditing must be configured to produce records containing information to establish what type of events occurred, where the events occurred, the source of the events, and the outcome of the events. These audit records must also identify individual identities of group account users."

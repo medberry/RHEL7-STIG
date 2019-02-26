@@ -358,6 +358,7 @@
   tags:
       - RHEL-07-010280
       - pwquality
+  register: RHEL-07-010280-RESULTS
 
 - name: "MEDIUM | RHEL-07-010310 | PATCH | The operating system must disable account identifiers (individuals, groups, roles, and devices) if the password expires."
   lineinfile:
@@ -617,6 +618,7 @@
       - RHEL-07-020240
       - login
       - umask
+  register: RHEL-07-020240-RESULTS
 
 - name: "MEDIUM | RHEL-07-020260 | PATCH | Vendor packaged system security patches and updates must be installed and up to date."
   block:
@@ -1662,6 +1664,7 @@
   tags:
       - RHEL-07-040110
       - ssh
+  register: RHEL-07-040110-RESULTS
 
 - name: "MEDIUM | RHEL-07-040160 | PATCH | All network connections associated with a communication session must be terminated at the  the session or after 10 minutes of inactivity from the user at a command prompt, except to fulfill documented and validated mission requirements."
   blockinfile:
